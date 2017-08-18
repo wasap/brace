@@ -20,7 +20,7 @@ var workersrcdir  =  path.join(braceroot, 'workersrc');
 var workerdir     =  path.join(braceroot, 'worker');
 var buildroot     =  path.join(__dirname, 'ace-build');
 
-var aceTag = 'v1.2.6';
+var aceTag = 'v1.2.8';
 
 +function updateCleanAndPutInOrder() {
 
@@ -37,6 +37,7 @@ var aceTag = 'v1.2.6';
     // move src-noconflict files to root after we cleaned it since that is all we need
     mv(path.join(buildroot, 'src-min-noconflict/snippets'), buildroot);
     mv(path.join(buildroot, 'src-noconflict/*'), buildroot);
+    cp(path.join(buildroot, '../tern/*'), buildroot)
 
     rm('-rf', path.join(buildroot, 'src-min-noconflict'));
     rm('-rf', path.join(buildroot, 'src-noconflict'));
