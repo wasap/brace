@@ -163,10 +163,13 @@ var DotHighlightRules = function() {
         "comment" : [
             {
                 token : "comment", // closing comment
-                regex : "\\*\\/",
+                regex : ".*?\\*\\/",
+                merge : true,
                 next : "start"
             }, {
-                defaultToken : "comment"
+                token : "comment", // comment spanning whole line
+                merge : true,
+                regex : ".+"
             }
         ],
         "qqstring" : [

@@ -24,15 +24,11 @@ var JsonHighlightRules = function() {
                 token : "constant.language.boolean",
                 regex : "(?:true|false)\\b"
             }, {
-                token : "text", // single quoted strings are not allowed
+                token : "invalid.illegal", // single quoted strings are not allowed
                 regex : "['](?:(?:\\\\.)|(?:[^'\\\\]))*?[']"
             }, {
-                token : "comment", // comments are not allowed, but who cares?
+                token : "invalid.illegal", // comments are not allowed
                 regex : "\\/\\/.*$"
-            }, {
-                token : "comment.start", // comments are not allowed, but who cares?
-                regex : "\\/\\*",
-                next  : "comment"
             }, {
                 token : "paren.lparen",
                 regex : "[[({]"
@@ -50,19 +46,15 @@ var JsonHighlightRules = function() {
                 regex : /\\(?:x[0-9a-fA-F]{2}|u[0-9a-fA-F]{4}|["\\\/bfnrt])/
             }, {
                 token : "string",
-                regex : '"|$',
+                regex : '[^"\\\\]+'
+            }, {
+                token : "string",
+                regex : '"',
                 next  : "start"
             }, {
-                defaultToken : "string"
-            }
-        ],
-        "comment" : [
-            {
-                token : "comment.end", // comments are not allowed, but who cares?
-                regex : "\\*\\/",
+                token : "string",
+                regex : "",
                 next  : "start"
-            }, {
-                defaultToken: "comment"
             }
         ]
     };

@@ -441,7 +441,6 @@ function setupSettingPanel(settingDiv, settingOpener, editor) {
             cobalt:           "Cobalt",
             crimson_editor:   "Crimson Editor",
             dawn:             "Dawn",
-            gob:              "Green on Black",
             eclipse:          "Eclipse",
             idle_fingers:     "Idle Fingers",
             kr_theme:         "Kr Theme",

@@ -264,7 +264,6 @@ oop.inherits(Mode, TextMode);
 (function() {
     this.lineCommentStart = "//";
     this.blockComment = {start: "/*", end: "*/", nestable: true};
-    this.$quotes = { '"': '"' };
     this.$id = "ace/mode/rust";
 }).call(Mode.prototype);
 
