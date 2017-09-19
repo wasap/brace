@@ -2352,7 +2352,7 @@ ace.define("ace/tern/tern_server",["require","exports","module","ace/range","ace
                 function popupSelectionChanged() {
                     closeAllTips(); //remove(tooltip); //using close all , but its slower, comeback and remove single if its working right
                     var data = editor.completer.popup.getData(editor.completer.popup.getRow());
-                    if (!data || !data.doc) { //no comments
+                    if (!data || !data.doc || !editor.completer.popup.isOpen) { //no comments
                         return;
                     }
                     var node = editor.completer.popup.renderer.getContainerElement();
@@ -3268,6 +3268,7 @@ ace.define("ace/tern/tern_server",["require","exports","module","ace/range","ace
         return makeTooltip(location.left, location.top, content, editor, true, timeout);
     }
     function makeTooltip(x, y, content, editor, closeOnCusorActivity, fadeOutDuration) {
+        closeAllTips();
         if (x === null || y === null) {
             var location = getCusorPosForTooltip(editor);
             x = location.left;
