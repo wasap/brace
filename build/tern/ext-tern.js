@@ -1622,7 +1622,9 @@ var Autocomplete = function() {
     };
 
     this.cancelContextMenu = function() {
-        this.editor.$mouseHandler.cancelContextMenu();
+        if (this.editor) {
+            this.editor.$mouseHandler.cancelContextMenu();
+        }
     };
 
     this.updateDocTooltip = function() {
@@ -2351,6 +2353,9 @@ ace.define("ace/tern/tern_server",["require","exports","module","ace/range","ace
                 }
                 function popupSelectionChanged() {
                     closeAllTips(); //remove(tooltip); //using close all , but its slower, comeback and remove single if its working right
+                    if (!editor || !editor.completer || !editor.completer.popup || !editor.completer.popup.getData) {
+                        return;
+                    }
                     var data = editor.completer.popup.getData(editor.completer.popup.getRow());
                     if (!data || !data.doc || !editor.completer.popup.isOpen) { //no comments
                         return;
