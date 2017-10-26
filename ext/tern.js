@@ -2333,7 +2333,7 @@ ace.define("ace/tern/tern_server",["require","exports","module","ace/range","ace
 
                 var tooltip = null;
 
-                if (!bindPopupSelect()) {
+                if (!ts.options.disableDocsTooltip && !bindPopupSelect()) {
                     popupSelectionChanged(); //call once if popupselect bound exited to show tooltip for first item
                 }
                 function bindPopupSelect() {
@@ -4064,17 +4064,21 @@ ace.define("ace/tern/tern",["require","exports","module","ace/config","ace/lib/l
                     val = true;
                 }
                 if (val) {
-                    var onCursorChange = getOnCursorChange_Tern(self);
-                    editors_for_OnCusorChange.push({
-                        editor  : self,
-                        handler : onCursorChange
-                    });
+                    if (!ternOptions.disableDocsTooltip) {
+                        var onCursorChange = getOnCursorChange_Tern(self);
+                        editors_for_OnCusorChange.push({
+                            editor  : self,
+                            handler : onCursorChange
+                        });
+                    }
 
                     createTernServer(function() {
                         self.completers = completers;
                         self.ternServer = aceTs;
                         self.commands.addCommand(Autocomplete.startCommand);
-                        self.getSession().selection.on('changeCursor', onCursorChange);
+                        if (!ternOptions.disableDocsTooltip) {
+                            self.getSession().selection.on('changeCursor', onCursorChange);
+                        }
                         self.commands.on('afterExec', onAfterExec_Tern);
                         self.on('destroy', function() {
                             self.ternServer.server.terminateWorker();
