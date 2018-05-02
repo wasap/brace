@@ -1,60 +1,23 @@
 {
   "name": "brace",
-  "version": "0.10.2",
-  "description": "browserify compatible version of the ace editor.",
+  "version": "2.0.0",
+  "description": "[browserify](https://github.com/substack/node-browserify) compatible version of the [ace editor](http://ajaxorg.github.io/ace/).",
   "main": "index.js",
-  "typings": "index.d.ts",
+  "directories": {
+    "example": "example",
+    "test": "test"
+  },
   "scripts": {
-    "update": "(cd build && node ./update && node ./update-ts)",
-    "test": "browserify test/*.js > test/bundle.js --debug && opener test/index.html"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/thlorenz/brace.git"
+    "url": "git+https://github.com/wasap/brace.git"
   },
-  "homepage": "https://github.com/thlorenz/brace",
-  "dependencies": {
-    "w3c-blob": "0.0.1"
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wasap/brace/issues"
   },
-  "devDependencies": {
-    "browserify": "~4.2.0",
-    "opener": "~1.3.0",
-    "shelljs": "~0.2.6",
-    "tape": "~4.0.0",
-    "uglify-js": "~2.2.5"
-  },
-  "keywords": [
-    "ace",
-    "editor",
-    "browser",
-    "package",
-    "bundle",
-    "inline",
-    "browserify"
-  ],
-  "author": {
-    "name": "Thorsten Lorenz",
-    "email": "thlorenz@gmx.de",
-    "url": "http://thlorenz.com"
-  },
-  "license": "MIT",
-  "engine": {
-    "node": ">=0.6"
-  },
-  "testling": {
-    "files": "test/*.js",
-    "browsers": [
-      "ie/8..latest",
-      "firefox/21..latest",
-      "firefox/nightly",
-      "chrome/26..latest",
-      "chrome/canary",
-      "opera/12..latest",
-      "opera/next",
-      "safari/5.1..latest",
-      "ipad/6.0..latest",
-      "iphone/6.0..latest",
-      "android-browser/4.2..latest"
-    ]
-  }
+  "homepage": "https://github.com/wasap/brace#readme"
 }
